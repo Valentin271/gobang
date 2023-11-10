@@ -584,7 +584,7 @@ mod test {
     #[test]
     fn test_headers() {
         let mut component = TableComponent::new(KeyConfig::default());
-        component.headers = vec!["a", "b", "c"].iter().map(|h| h.to_string()).collect();
+        component.headers = ["a", "b", "c"].iter().map(|h| h.to_string()).collect();
         assert_eq!(component.headers(1, 2), vec!["", "b"])
     }
 
@@ -592,8 +592,8 @@ mod test {
     fn test_rows() {
         let mut component = TableComponent::new(KeyConfig::default());
         component.rows = vec![
-            vec!["a", "b", "c"].iter().map(|h| h.to_string()).collect(),
-            vec!["d", "e", "f"].iter().map(|h| h.to_string()).collect(),
+            ["a", "b", "c"].iter().map(|h| h.to_string()).collect(),
+            ["d", "e", "f"].iter().map(|h| h.to_string()).collect(),
         ];
         assert_eq!(component.rows(1, 2), vec![vec!["1", "b"], vec!["2", "e"]],)
     }
@@ -611,10 +611,10 @@ mod test {
         // 2 |d  e| f
 
         let mut component = TableComponent::new(KeyConfig::default());
-        component.headers = vec!["1", "2", "3"].iter().map(|h| h.to_string()).collect();
+        component.headers = ["1", "2", "3"].iter().map(|h| h.to_string()).collect();
         component.rows = vec![
-            vec!["a", "b", "c"].iter().map(|h| h.to_string()).collect(),
-            vec!["d", "e", "f"].iter().map(|h| h.to_string()).collect(),
+            ["a", "b", "c"].iter().map(|h| h.to_string()).collect(),
+            ["d", "e", "f"].iter().map(|h| h.to_string()).collect(),
         ];
         component.selected_row.select(Some(1));
         component.selected_column = 1;
@@ -636,10 +636,10 @@ mod test {
         // 2  d |e  f|
 
         let mut component = TableComponent::new(KeyConfig::default());
-        component.headers = vec!["1", "2", "3"].iter().map(|h| h.to_string()).collect();
+        component.headers = ["1", "2", "3"].iter().map(|h| h.to_string()).collect();
         component.rows = vec![
-            vec!["a", "b", "c"].iter().map(|h| h.to_string()).collect(),
-            vec!["d", "e", "f"].iter().map(|h| h.to_string()).collect(),
+            ["a", "b", "c"].iter().map(|h| h.to_string()).collect(),
+            ["d", "e", "f"].iter().map(|h| h.to_string()).collect(),
         ];
         component.selected_row.select(Some(1));
         component.selected_column = 1;
@@ -662,8 +662,8 @@ mod test {
 
         let mut component = TableComponent::new(KeyConfig::default());
         component.rows = vec![
-            vec!["a", "b", "c"].iter().map(|h| h.to_string()).collect(),
-            vec!["d", "e", "f"].iter().map(|h| h.to_string()).collect(),
+            ["a", "b", "c"].iter().map(|h| h.to_string()).collect(),
+            ["d", "e", "f"].iter().map(|h| h.to_string()).collect(),
         ];
         component.selected_row.select(Some(1));
         component.selected_column = 1;
@@ -686,8 +686,8 @@ mod test {
 
         let mut component = TableComponent::new(KeyConfig::default());
         component.rows = vec![
-            vec!["a", "b", "c"].iter().map(|h| h.to_string()).collect(),
-            vec!["d", "e", "f"].iter().map(|h| h.to_string()).collect(),
+            ["a", "b", "c"].iter().map(|h| h.to_string()).collect(),
+            ["d", "e", "f"].iter().map(|h| h.to_string()).collect(),
         ];
         component.selected_row.select(Some(0));
         component.selected_column = 1;
@@ -699,10 +699,10 @@ mod test {
     #[test]
     fn test_is_number_column() {
         let mut component = TableComponent::new(KeyConfig::default());
-        component.headers = vec!["1", "2", "3"].iter().map(|h| h.to_string()).collect();
+        component.headers = ["1", "2", "3"].iter().map(|h| h.to_string()).collect();
         component.rows = vec![
-            vec!["a", "b", "c"].iter().map(|h| h.to_string()).collect(),
-            vec!["d", "e", "f"].iter().map(|h| h.to_string()).collect(),
+            ["a", "b", "c"].iter().map(|h| h.to_string()).collect(),
+            ["d", "e", "f"].iter().map(|h| h.to_string()).collect(),
         ];
         component.selected_row.select(Some(0));
         assert!(component.is_number_column(0, 0));
@@ -716,10 +716,10 @@ mod test {
         // 2  d  e f
 
         let mut component = TableComponent::new(KeyConfig::default());
-        component.headers = vec!["1", "2", "3"].iter().map(|h| h.to_string()).collect();
+        component.headers = ["1", "2", "3"].iter().map(|h| h.to_string()).collect();
         component.rows = vec![
-            vec!["a", "b", "c"].iter().map(|h| h.to_string()).collect(),
-            vec!["d", "e", "f"].iter().map(|h| h.to_string()).collect(),
+            ["a", "b", "c"].iter().map(|h| h.to_string()).collect(),
+            ["d", "e", "f"].iter().map(|h| h.to_string()).collect(),
         ];
         component.selected_row.select(Some(0));
         assert_eq!(component.selected_cells(), Some("a".to_string()));
@@ -732,10 +732,10 @@ mod test {
         // 2 |d  e| f
 
         let mut component = TableComponent::new(KeyConfig::default());
-        component.headers = vec!["1", "2", "3"].iter().map(|h| h.to_string()).collect();
+        component.headers = ["1", "2", "3"].iter().map(|h| h.to_string()).collect();
         component.rows = vec![
-            vec!["a", "b", "c"].iter().map(|h| h.to_string()).collect(),
-            vec!["d", "e", "f"].iter().map(|h| h.to_string()).collect(),
+            ["a", "b", "c"].iter().map(|h| h.to_string()).collect(),
+            ["d", "e", "f"].iter().map(|h| h.to_string()).collect(),
         ];
         component.selected_row.select(Some(0));
         component.selection_area_corner = Some((1, 1));
@@ -749,10 +749,10 @@ mod test {
         // 2  d  e f
 
         let mut component = TableComponent::new(KeyConfig::default());
-        component.headers = vec!["1", "2", "3"].iter().map(|h| h.to_string()).collect();
+        component.headers = ["1", "2", "3"].iter().map(|h| h.to_string()).collect();
         component.rows = vec![
-            vec!["a", "b", "c"].iter().map(|h| h.to_string()).collect(),
-            vec!["d", "e", "f"].iter().map(|h| h.to_string()).collect(),
+            ["a", "b", "c"].iter().map(|h| h.to_string()).collect(),
+            ["d", "e", "f"].iter().map(|h| h.to_string()).collect(),
         ];
         component.selected_row.select(Some(0));
         // a
@@ -770,10 +770,10 @@ mod test {
         // 2 |d  e| f
 
         let mut component = TableComponent::new(KeyConfig::default());
-        component.headers = vec!["1", "2", "3"].iter().map(|h| h.to_string()).collect();
+        component.headers = ["1", "2", "3"].iter().map(|h| h.to_string()).collect();
         component.rows = vec![
-            vec!["a", "b", "c"].iter().map(|h| h.to_string()).collect(),
-            vec!["d", "e", "f"].iter().map(|h| h.to_string()).collect(),
+            ["a", "b", "c"].iter().map(|h| h.to_string()).collect(),
+            ["d", "e", "f"].iter().map(|h| h.to_string()).collect(),
         ];
         component.selected_row.select(Some(0));
         component.selection_area_corner = Some((1, 1));
@@ -792,13 +792,13 @@ mod test {
     #[test]
     fn test_calculate_cell_widths_when_sum_of_cell_widths_is_greater_than_table_width() {
         let mut component = TableComponent::new(KeyConfig::default());
-        component.headers = vec!["1", "2", "3"].iter().map(|h| h.to_string()).collect();
+        component.headers = ["1", "2", "3"].iter().map(|h| h.to_string()).collect();
         component.rows = vec![
-            vec!["aaaaa", "bbbbb", "ccccc"]
+            ["aaaaa", "bbbbb", "ccccc"]
                 .iter()
                 .map(|h| h.to_string())
                 .collect(),
-            vec!["d", "e", "f"].iter().map(|h| h.to_string()).collect(),
+            ["d", "e", "f"].iter().map(|h| h.to_string()).collect(),
         ];
         let (selected_column_index, headers, rows, constraints) =
             component.calculate_cell_widths(10);
@@ -818,13 +818,13 @@ mod test {
     #[test]
     fn test_calculate_cell_widths_when_sum_of_cell_widths_is_less_than_table_width() {
         let mut component = TableComponent::new(KeyConfig::default());
-        component.headers = vec!["1", "2", "3"].iter().map(|h| h.to_string()).collect();
+        component.headers = ["1", "2", "3"].iter().map(|h| h.to_string()).collect();
         component.rows = vec![
-            vec!["aaaaa", "bbbbb", "ccccc"]
+            ["aaaaa", "bbbbb", "ccccc"]
                 .iter()
                 .map(|h| h.to_string())
                 .collect(),
-            vec!["d", "e", "f"].iter().map(|h| h.to_string()).collect(),
+            ["d", "e", "f"].iter().map(|h| h.to_string()).collect(),
         ];
 
         let (selected_column_index, headers, rows, constraints) =
@@ -852,13 +852,13 @@ mod test {
     #[test]
     fn test_calculate_cell_widths_when_component_has_multiple_rows() {
         let mut component = TableComponent::new(KeyConfig::default());
-        component.headers = vec!["1", "2", "3"].iter().map(|h| h.to_string()).collect();
+        component.headers = ["1", "2", "3"].iter().map(|h| h.to_string()).collect();
         component.rows = vec![
-            vec!["aaaaa", "bbbbb", "ccccc"]
+            ["aaaaa", "bbbbb", "ccccc"]
                 .iter()
                 .map(|h| h.to_string())
                 .collect(),
-            vec!["dddddddddd", "e", "f"]
+            ["dddddddddd", "e", "f"]
                 .iter()
                 .map(|h| h.to_string())
                 .collect(),

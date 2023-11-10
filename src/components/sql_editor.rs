@@ -258,12 +258,12 @@ impl Component for SqlEditorComponent {
             key if matches!(self.focus, Focus::Table) => return self.table.event(key),
             _ => (),
         }
-        return Ok(EventState::NotConsumed);
+        Ok(EventState::NotConsumed)
     }
 
-    async fn async_event(&mut self, key: Key, pool: &Box<dyn Pool>) -> Result<EventState> {
+    async fn async_event(&mut self, key: Key, pool: &dyn Pool) -> Result<EventState> {
         if key == self.key_config.enter && matches!(self.focus, Focus::Editor) {
-            let query = self.input.iter().collect();
+            let query: String = self.input.iter().collect();
             let result = pool.execute(&query).await?;
             match result {
                 ExecuteResult::Read {

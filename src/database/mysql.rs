@@ -149,7 +149,7 @@ impl TableRow for Index {
 
 #[async_trait]
 impl Pool for MySqlPool {
-    async fn execute(&self, query: &String) -> anyhow::Result<ExecuteResult> {
+    async fn execute(&self, query: &str) -> anyhow::Result<ExecuteResult> {
         let query = query.trim();
 
         if query.to_uppercase().starts_with("SELECT") {

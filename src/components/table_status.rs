@@ -12,22 +12,12 @@ use tui::{
 use super::{Component, DrawableComponent, EventState};
 use crate::{components::command::CommandInfo, event::Key};
 
+#[derive(Default)]
 pub struct TableStatusComponent {
     column_count: Option<usize>,
     row_count: Option<usize>,
     total_row_count: Option<usize>,
     table: Option<Table>,
-}
-
-impl Default for TableStatusComponent {
-    fn default() -> Self {
-        Self {
-            row_count: None,
-            total_row_count: None,
-            column_count: None,
-            table: None,
-        }
-    }
 }
 
 impl TableStatusComponent {

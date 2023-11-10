@@ -1,4 +1,4 @@
-use std::time::Duration;
+use std::{fmt::Write, time::Duration};
 
 use async_trait::async_trait;
 use chrono::{NaiveDate, NaiveDateTime, NaiveTime};
@@ -150,7 +150,7 @@ impl TableRow for Index {
 
 #[async_trait]
 impl Pool for PostgresPool {
-    async fn execute(&self, query: &String) -> anyhow::Result<ExecuteResult> {
+    async fn execute(&self, query: &str) -> anyhow::Result<ExecuteResult> {
         let query = query.trim();
         if query.to_uppercase().starts_with("SELECT") {
             let mut rows = sqlx::query(query).fetch(&self.pool);
@@ -549,10 +549,10 @@ fn convert_column_value_to_string(row: &PgRow, column: &PgColumn) -> anyhow::Res
         Ok(value.map_or("NULL".to_string(), |values| {
             format!(
                 "\\x{}",
-                values
-                    .iter()
-                    .map(|v| format!("{:02x}", v))
-                    .collect::<String>()
+                values.iter().fold(String::new(), |mut out, v| {
+                    let _ = write!(out, "{:02x}", v);
+                    out
+                })
             )
         }))
     } else if let Ok(value) = row.try_get(column_name) {

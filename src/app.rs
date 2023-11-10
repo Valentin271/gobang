@@ -152,7 +152,7 @@ impl App {
                 ))
             };
             self.databases
-                .update(conn, self.pool.as_ref().unwrap())
+                .update(conn, self.pool.as_deref().unwrap())
                 .await?;
             self.focus = Focus::DabataseList;
             self.record_table.reset();
@@ -260,7 +260,11 @@ impl App {
                             table.clone(),
                         );
                         self.properties
-                            .update(database.clone(), table.clone(), self.pool.as_ref().unwrap())
+                            .update(
+                                database.clone(),
+                                table.clone(),
+                                self.pool.as_deref().unwrap(),
+                            )
                             .await?;
                         self.focus = Focus::Table;
                     }
@@ -323,7 +327,7 @@ impl App {
                         if self.sql_editor.event(key)?.is_consumed()
                             || self
                                 .sql_editor
-                                .async_event(key, self.pool.as_ref().unwrap())
+                                .async_event(key, self.pool.as_deref().unwrap())
                                 .await?
                                 .is_consumed()
                         {

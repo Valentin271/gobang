@@ -162,9 +162,7 @@ impl StatefulDrawableComponent for TableFilterComponent {
                 (self
                     .table
                     .as_ref()
-                    .map_or(String::new(), |table| {
-                        format!("{} ", table.name.to_string())
-                    })
+                    .map_or(String::new(), |table| format!("{} ", table.name))
                     .width() as u16)
                     .saturating_add(self.input_cursor_position),
                 0,

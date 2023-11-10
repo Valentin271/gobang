@@ -95,7 +95,7 @@ pub trait Component {
     async fn async_event(
         &mut self,
         _key: crate::event::Key,
-        _pool: &Box<dyn Pool>,
+        _pool: &dyn Pool,
     ) -> Result<EventState> {
         Ok(EventState::NotConsumed)
     }

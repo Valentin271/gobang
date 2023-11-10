@@ -69,7 +69,7 @@ impl PropertiesComponent {
         &mut self,
         database: Database,
         table: Table,
-        pool: &Box<dyn Pool>,
+        pool: &dyn Pool,
     ) -> Result<()> {
         self.column_table.reset();
         let columns = pool.get_columns(&database, &table).await?;

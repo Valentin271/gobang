@@ -340,11 +340,10 @@ mod test {
         if let Value::Object(map) = value {
             let mut values: Vec<String> = map
                 .values()
-                .map(|v| match v {
+                .filter_map(|v| match v {
                     Value::Object(map) => Some(format!("{:?}", map)),
                     _ => None,
                 })
-                .flatten()
                 .collect();
             values.sort();
             let before_values = values.clone();
@@ -361,22 +360,22 @@ mod test {
         env::set_var("TEST", test_env);
 
         assert_eq!(
-            expand_path(&Path::new("$HOME/foo")),
+            expand_path(Path::new("$HOME/foo")),
             Some(PathBuf::from(&home).join("foo"))
         );
 
         assert_eq!(
-            expand_path(&Path::new("$HOME/foo/$TEST/bar")),
+            expand_path(Path::new("$HOME/foo/$TEST/bar")),
             Some(PathBuf::from(&home).join("foo").join(test_env).join("bar"))
         );
 
         assert_eq!(
-            expand_path(&Path::new("~/foo")),
+            expand_path(Path::new("~/foo")),
             Some(PathBuf::from(&home).join("foo"))
         );
 
         assert_eq!(
-            expand_path(&Path::new("~/foo/~/bar")),
+            expand_path(Path::new("~/foo/~/bar")),
             Some(PathBuf::from(&home).join("foo").join("~").join("bar"))
         );
     }
