@@ -81,8 +81,8 @@ impl DatabaseTreeItems {
         TreeItemsIterator::new(self, start, max_amount)
     }
 
-    fn push_databases<'a>(
-        database: &'a Database,
+    fn push_databases(
+        database: &Database,
         nodes: &mut Vec<DatabaseTreeItem>,
         items_added: &mut HashMap<String, usize>,
         collapsed: &BTreeSet<&String>,

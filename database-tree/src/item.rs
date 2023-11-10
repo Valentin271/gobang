@@ -241,7 +241,7 @@ impl PartialEq for DatabaseTreeItem {
 
 impl PartialOrd for DatabaseTreeItem {
     fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
-        self.kind.name().partial_cmp(&other.kind.name())
+        Some(self.cmp(other))
     }
 }
 
