@@ -26,7 +26,7 @@ tokio = { version = "1.11.0", features = ["full"] }
 futures = "0.3.5"
 serde_json = "1.0"
 serde = "1.0"
-toml = "0.4"
+toml = "0.8"
 strum = "0.25"
 strum_macros = "0.25"
 database-tree = { path = "./database-tree", version = "0.1.0-alpha.5" }
