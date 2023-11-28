@@ -32,7 +32,7 @@ strum_macros = "0.25"
 database-tree = { path = "./database-tree", version = "0.1.0-alpha.5" }
 easy-cast = "0.4"
 async-trait = "0.1.50"
-itertools = "0.10.0"
+itertools = "0.12.0"
 rust_decimal = "1.15"
 dirs-next = "2.0"
 clap = "2.33.3"
